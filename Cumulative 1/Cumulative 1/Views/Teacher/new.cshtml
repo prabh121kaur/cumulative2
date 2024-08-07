@@ -1,0 +1,15 @@
+﻿@model Cumulative_1.Models.Teacher
+
+<h2>Add New Teacher</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <!-- Add more fields for teacher details if necessary -->
+    <button type="submit" class="btn btn-primary">Add Teacher</button>
+</form>
+
+<a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>

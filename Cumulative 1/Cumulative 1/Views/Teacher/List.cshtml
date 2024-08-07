@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Cumulative_1.Models.Teacher>
+
+<h2>Teachers List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td>@teacher.Id</td>
+                <td>@teacher.Name</td>
+                <td>
+                    <a href="@Url.Action("Show", new { id = teacher.Id })">Details</a> |
+                    <a href="#" onclick="if(confirm('Are you sure?')) { document.getElementById('deleteForm@teacher.Id').submit(); }">Delete</a>
+                    <form id="deleteForm@teacher.Id" asp-action="Delete" asp-route-id="@teacher.Id" method="post" style="display:none;">
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("New")" class="btn btn-primary">Add New Teacher</a>
